@@ -3,6 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import {loadingStart, loadingFinish} from '../actions/loading';
+import {addClick, deleteClick} from '../actions/clicks';
+import setCursorCoordinates from '../actions/setCursorCoordinates';
+import setCircleCoordinates from '../actions/setCircleCoordinates';
+import setAreaSize from '../actions/setAreaSize';
 
 import Main from '../components/app';
 
@@ -11,7 +15,7 @@ class App extends Component {
     this.props.dispatch(loadingStart());
     setTimeout(() => {
       return this.props.dispatch(loadingFinish());
-    }, 2000)
+    }, 500)
   }
 
   render() {
@@ -20,13 +24,24 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const props = {};
+  const props = {
+    clicks: state.clicks.clicks,
+    cursor: state.coordinates.cursor,
+    circle: state.coordinates.circle,
+    area: state.coordinates.area
+  };
 
   return props;
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = {};
+  const actions = {
+    addClick,
+    deleteClick,
+    setCursorCoordinates,
+    setCircleCoordinates,
+    setAreaSize
+  };
 
   const actionMap = {actions: bindActionCreators(actions, dispatch), dispatch};
 

@@ -1,0 +1,14 @@
+.circle {
+  border-radius: 100%;
+  background-color: rgb(255, 35, 35);
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  transition: left 0.3s, top 0.5s;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
